@@ -10,7 +10,7 @@ class WatchFace : public Watchy { //inherit and extend Watchy class
       int16_t  x1, y1, lasty;
       uint16_t w, h;
       String textstring;
-      bool light = true;
+      bool light = false;
       
       //drawbg
       display.fillScreen(light ? GxEPD_WHITE : GxEPD_BLACK);
