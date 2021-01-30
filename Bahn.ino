@@ -24,7 +24,7 @@ class WatchFace : public Watchy { //inherit and extend Watchy class
       //draw hours
       textstring = currentTime.Hour;
       display.getTextBounds(textstring, 0, 0, &x1, &y1, &w, &h);
-      display.setCursor(184-w, 100-5);
+      display.setCursor(183-w, 100-5);
       display.print(textstring);
       
       //draw minutes
@@ -42,7 +42,7 @@ class WatchFace : public Watchy { //inherit and extend Watchy class
       display.fillRoundRect(16,16,34,12,4,light ? GxEPD_BLACK : GxEPD_WHITE);
       display.fillRoundRect(49,20,3,4,2,light ? GxEPD_BLACK : GxEPD_WHITE);
       display.fillRoundRect(18,18,30,8,3,light ? GxEPD_WHITE : GxEPD_BLACK);
-      float batt = (getBatteryVoltage()-3.8)/0.40;
+      float batt = (getBatteryVoltage()-3.3)/0.9;
       if (batt > 0) {
        display.fillRoundRect(20,20,26*batt,4,2,light ? GxEPD_BLACK : GxEPD_WHITE);
       }									
