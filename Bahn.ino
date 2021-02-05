@@ -1,6 +1,6 @@
 #include <Watchy.h> //include the Watchy library
-#include <DIN_1451_Engschrift_Regular64pt7b.h>
-#include <DIN_1451_Engschrift_Regular12pt7b.h>
+#include "DIN_1451_Engschrift_Regular64pt7b.h"
+#include "DIN_1451_Engschrift_Regular12pt7b.h"
 				
 
 class WatchFace : public Watchy { //inherit and extend Watchy class
