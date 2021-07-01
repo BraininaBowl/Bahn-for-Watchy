@@ -10,7 +10,15 @@ class WatchFace : public Watchy { //inherit and extend Watchy class
       int16_t  x1, y1, lasty;
       uint16_t w, h;
       String textstring;
-      bool light = true;
+      bool light = false;
+
+      // ** UPDATE **
+      //resets step counter at midnight everyday
+      if(currentTime.Hour == 00 && currentTime.Minute == 00) {
+        sensor.resetStepCounter();
+      }
+
+      // ** DRAW **
       
       //drawbg
       display.fillScreen(light ? GxEPD_WHITE : GxEPD_BLACK);
