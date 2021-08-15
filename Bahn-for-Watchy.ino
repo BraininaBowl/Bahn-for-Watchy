@@ -90,7 +90,58 @@ class WatchFace : public Watchy { //inherit and extend Watchy class
       display.getTextBounds(textstring, 0, 0, &x1, &y1, &w, &h);
       display.setCursor(16, lasty);
       display.print(textstring);
+      lasty += -40;
 
+      // weather things
+      weatherData currentWeather = getWeatherData();
+      int8_t temperature = currentWeather.temperature;
+      int16_t weatherConditionCode = currentWeather.weatherConditionCode;
+
+      // draw weather state
+      if (weatherConditionCode >= 801) {
+        textstring = "Cloudy";
+      } else if (weatherConditionCode == 800) {
+        textstring = "Clear";
+      } else if (weatherConditionCode == 781) {
+        textstring = "Tornado";
+      } else if (weatherConditionCode == 771) {
+        textstring = "Squall";
+      } else if (weatherConditionCode == 762) {
+        textstring = "Ash";
+      } else if (weatherConditionCode == 761 || weatherConditionCode == 731) {
+        textstring = "Dust";
+      } else if (weatherConditionCode == 751) {
+        textstring = "Sand";
+      } else if (weatherConditionCode == 741) {
+        textstring = "Fog";
+      } else if (weatherConditionCode == 721) {
+        textstring = "Haze";
+      } else if (weatherConditionCode == 711) {
+        textstring = "Smoke";
+      } else if (weatherConditionCode == 701) {
+        textstring = "Mist";
+      } else if (weatherConditionCode >= 600) {
+        textstring = "Snow";
+      } else if (weatherConditionCode >= 500) {
+        textstring = "Rain";
+      } else if (weatherConditionCode >= 300) {
+        textstring = "Drizzle";
+      } else if (weatherConditionCode >= 200) {
+        textstring = "Thunderstorm";
+      } else {
+        textstring = "";
+      }
+      display.getTextBounds(textstring, 0, 0, &x1, &y1, &w, &h);
+      display.setCursor(16, lasty);
+      display.print(textstring);
+      lasty += -20;
+
+      // draw temperature
+      textstring = temperature;
+      textstring += strcmp(TEMP_UNIT, "metric") == 0 ? "C" : "F";
+      display.getTextBounds(textstring, 0, 0, &x1, &y1, &w, &h);
+      display.setCursor(16, lasty);
+      display.print(textstring);
     }
 };
 
