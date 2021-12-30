@@ -70,7 +70,7 @@ class WatchFace : public Watchy { //inherit and extend Watchy class
       lasty += -8-h;
 
       // draw year
-      textstring = currentTime.Year + 2000;
+      textstring = currentTime.Year + 1970;
       display.getTextBounds(textstring, 0, 0, &x1, &y1, &w, &h);
       display.setCursor(16, lasty);
       display.print(textstring);
